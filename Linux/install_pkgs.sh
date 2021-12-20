@@ -9,7 +9,7 @@ fi
 # Define packages list
 packages=(
     'nano'
-    'wgat'
+    'wget'
     'net-tools'
     'burp'
 )
