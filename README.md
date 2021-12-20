@@ -123,10 +123,11 @@ SSH into the control node and follow the steps below:
 - `$ sudo docker start [container_name]` &nbsp;&nbsp;&nbsp;-To start using container 
 - `$ sudo docker attach [contanier_name]`&nbsp;&nbsp;-To get a bash shell of the container
 
-Now you should be in the Ansible container shell, continue to the next step.
-<p>Download the YAML files from the Anisble folder in this repository.</p> 
+Now you should be in the Ansible container shell, continue to the next step.<p></p> 
 
 **Installing the ELK container**
+- Download the playbook with following command:
+  - `curl https://raw.githubusercontent.com/AdemirIglesias/ELK_Stack_Project/main/Ansible/install-elk-playbook.yml > install-elk-playbook.yml`<p></p>
 - Copy the [install-elk-playbook.yml](/Ansible/install-elk-playbook.yml) file to `/etc/ansible/roles`
 - Update the ansible hosts file to include the ELK-VM IP address like so:
  
@@ -146,11 +147,16 @@ Now you should be in the Ansible container shell, continue to the next step.
 - Run the playbook 
   - `$ ansible-playbook /etc/ansible/roles/install-elk-playbook.yml` <br></br>
   
-- Navigate to `Your_ELK-VM_Public_IP:5601` to check that the installation worked as expected.
+- Navigate to `ELK-VM_Public_IP:5601` to check that the installation worked as expected.
  
-  - Example URL:&ensp;`98.208.38.202:5601`
+  - Example URL:&ensp;`98.208.38.202:5601` <p></p>
 
 **Installing Filebeat container**
+
+- Download the playbook and config file with following command:
+  - `curl https://raw.githubusercontent.com/AdemirIglesias/ELK_Stack_Project/main/Ansible/filebeat-playbook.yml > filebeat-playbook.yml`
+
+  - `curl https://raw.githubusercontent.com/AdemirIglesias/ELK_Stack_Project/main/Ansible/filebeat-config.yml > filebeat-config.yml`<p></p>
 - Copy the [filebeat-playbook.yml](/Ansible/filebeat-playbook.yml) file to `/etc/ansible/roles`
 - Copy the [filebeat-config.yml](/Ansible/filebeat-config.yml) file to `/etc/ansible/files`
 - Update the filebeat-config file to reflect ELK-VM's current IP address:
@@ -183,6 +189,10 @@ If installation is successful it will appear as below:
 ![Filebeat](Diagrams/Images/FileBeat.png)<br></br>
 
 **Installing MetricBeat container**
+- Download the playbook and config file with following command:
+  - `curl https://raw.githubusercontent.com/AdemirIglesias/ELK_Stack_Project/main/Ansible/metricbeat-playbook.yml > metricbeat-playbook.yml`
+
+  - `curl https://raw.githubusercontent.com/AdemirIglesias/ELK_Stack_Project/main/Ansible/metricbeat-config.yml > metricbeat-config.yml`<p></p>
 - Copy the [metricbeat-playbook.yml](/Ansible/metricbeat-playbook.yml) file to `/etc/ansible/roles`
 - Copy the [metricbeat-config.yml](/Ansible/metricbeat-config.yml) file to `/etc/ansible/files`
 - Update the metricbeat-config file to reflect ELK-VM's current IP address:
